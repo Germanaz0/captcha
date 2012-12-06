@@ -105,6 +105,9 @@ function captcha_verify_action_hook($hook, $entity_type, $returnvalue, $params) 
 		return TRUE;
 	}
 
+	//Generate the sticky form, if we miss the captcha, will not loose the register form data
+	elgg_make_sticky_form($entity_type);
+
 	register_error(elgg_echo('captcha:captchafail'));
 
 	// forward to referrer or else action code sends to front page
